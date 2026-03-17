@@ -1,0 +1,335 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-page-bg: #0B1120;
+  --color-card: #111B2E;
+  --color-card-hover: #162236;
+  --color-navy: #111B2E;
+  --color-navy-light: #162236;
+  --color-navy-lighter: #1E2D45;
+  --color-orange: #F97316;
+  --color-orange-dark: #EA580C;
+  --color-orange-light: #FB923C;
+  --color-amber: #F59E0B;
+  --color-electric-blue: #3B82F6;
+  --color-purple: #8B5CF6;
+  --color-green: #10B981;
+  --color-red: #EF4444;
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #8896AB;
+  --color-text-muted: #4B5C73;
+  --color-border: #1C2A3F;
+  --color-border-hover: #263A52;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-thai: 'Noto Sans Thai', sans-serif;
+  --font-chinese: 'Noto Sans SC', sans-serif;
+}
+
+/* ── Base ───────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+html[lang="th"] body {
+  font-family: var(--font-thai);
+}
+
+html[lang="zh-Hans"] body {
+  font-family: var(--font-chinese);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Animations ─────────────────────────────── */
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), 0 0 32px rgba(239, 68, 68, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(239, 68, 68, 0.8), 0 0 56px rgba(239, 68, 68, 0.3), 0 0 80px rgba(239, 68, 68, 0.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* ── Cards ──────────────────────────────────── */
+
+.card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card:hover {
+  background-color: var(--color-card-hover);
+  border-color: var(--color-border-hover);
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+}
+
+/* Service-specific glow on hover */
+.card-glow-amber:hover {
+  box-shadow: 0 8px 40px rgba(245, 158, 11, 0.12), 0 0 0 1px rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.card-glow-blue:hover {
+  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.12), 0 0 0 1px rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+.card-glow-purple:hover {
+  box-shadow: 0 8px 40px rgba(139, 92, 246, 0.12), 0 0 0 1px rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+.card-glow-green:hover {
+  box-shadow: 0 8px 40px rgba(16, 185, 129, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.card-glow-orange:hover {
+  box-shadow: 0 8px 40px rgba(249, 115, 22, 0.12), 0 0 0 1px rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.25);
+}
+
+/* ── Buttons ────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 14px;
+  min-height: 56px;
+  letter-spacing: -0.01em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 24px rgba(249, 115, 22, 0.25), 0 0 0 0 rgba(249, 115, 22, 0);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 40px rgba(249, 115, 22, 0.4), 0 0 0 1px rgba(249, 115, 22, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: transparent;
+  border: 1.5px solid var(--color-border-hover);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 14px;
+  min-height: 56px;
+  letter-spacing: -0.01em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-orange);
+  background: rgba(249, 115, 22, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ── Forms ──────────────────────────────────── */
+
+input, textarea, select {
+  background-color: var(--color-page-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  color: var(--color-text-primary);
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1), 0 0 20px rgba(249, 115, 22, 0.05);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+select option {
+  background-color: var(--color-card);
+  color: var(--color-text-primary);
+}
+
+/* ── Section Label (uppercase) ──────────────── */
+
+.section-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin-bottom: 16px;
+  font-family: var(--font-sans);
+}
+
+/* ── Section Spacing ────────────────────────── */
+
+.section-padding {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+/* ── Typography ─────────────────────────────── */
+
+.heading-xl {
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.heading-lg {
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-md {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.text-body {
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.text-body-lg {
+  font-size: clamp(17px, 1.8vw, 21px);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ── Gradient Orbs (background decoration) ──── */
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-orange {
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.orb-blue {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.orb-purple {
+  background: rgba(139, 92, 246, 0.05);
+}
+
+/* ── Hero ───────────────────────────────────── */
+
+.hero-gradient {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(249, 115, 22, 0.04) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 50% at 80% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+              var(--color-page-bg);
+}
+
+/* ── Divider Line ───────────────────────────── */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border) 20%, var(--color-border) 80%, transparent);
+}

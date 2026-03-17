@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next build:*)",
+      "Bash(npx eslint:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npm run dev:*)",
+      "Bash(start:*)",
+      "Bash(cd /c/Users/denny/Desktop/dev/top-repairs-cnx && npx next dev --turbopack 2>&1)",
+      "Bash(powershell:*)",
+      "Bash(npx kill-port 3000)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill -9)",
+      "Bash(netstat -ano)",
+      "Bash(xargs -I{} taskkill //PID {} //F)",
+      "Bash(npm run:*)",
+      "Bash(find /c/Users/denny/Desktop/dev/top-repairs-cnx/app /c/Users/denny/Desktop/dev/top-repairs-cnx/components /c/Users/denny/Desktop/dev/top-repairs-cnx/lib -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.css \\\\\\))",
+      "Bash(git config:*)",
+      "Bash(gh auth:*)",
+      "Bash(git:*)",
+      "Bash(winget install:*)",
+      "Bash(export PATH=\"/c/Program Files/GitHub CLI:$PATH\")"
+    ]
+  }
+}
