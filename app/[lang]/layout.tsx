@@ -59,6 +59,14 @@ export default async function LangLayout({
 
   return (
     <html lang={lang === 'zh' ? 'zh-Hans' : lang}>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CW2ZZ6S01" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-2CW2ZZ6S01');`,
+          }}
+        />
+      </head>
       <body
         className={`${plusJakarta.variable} ${playfair.variable} ${notoSansThai.variable} ${notoSansSC.variable} antialiased`}
       >
