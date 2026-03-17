@@ -34,7 +34,10 @@ const notoSansSC = Noto_Sans_SC({
 export const metadata: Metadata = {
   title: 'Top Repairs CNX',
   description: 'Professional repair services in Chiang Mai and Lamphun',
-  icons: { icon: '/favicon.ico' },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   metadataBase: new URL('https://toprepairscnx.com'),
   openGraph: {
     siteName: 'Top Repairs CNX',
