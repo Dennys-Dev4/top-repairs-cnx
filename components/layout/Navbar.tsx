@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Lang } from '@/lib/types';
 import { t } from '@/lib/translations';
@@ -38,11 +39,8 @@ export default function Navbar({ lang }: { lang: Lang }) {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between h-[76px]">
-          <Link
-            href={`/${lang}`}
-            className="font-[family-name:var(--font-playfair)] text-[22px] font-bold text-text-primary hover:text-orange transition-colors duration-300 tracking-tight"
-          >
-            Top Repairs <span className="text-orange">CNX</span>
+          <Link href={`/${lang}`} className="hover:opacity-80 transition-opacity duration-300">
+            <Image src="/logo.png" alt="Top Repairs CNX" width={180} height={45} priority />
           </Link>
 
           {/* Desktop nav */}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Lang } from '@/lib/types';
 import { t } from '@/lib/translations';
 import { PHONE, PHONE_DISPLAY, LINE_ID } from '@/lib/contact';
@@ -10,9 +11,7 @@ export default function Footer({ lang }: { lang: Lang }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-14">
           {/* Brand */}
           <div>
-            <h3 className="font-[family-name:var(--font-playfair)] text-[24px] font-bold text-text-primary mb-4 tracking-tight">
-              Top Repairs <span className="text-orange">CNX</span>
-            </h3>
+            <Image src="/logo.png" alt="Top Repairs CNX" width={180} height={45} className="mb-4" />
             <p className="text-text-secondary text-[15px] leading-[1.8]">{t(lang, 'footer_tagline')}</p>
           </div>
 
