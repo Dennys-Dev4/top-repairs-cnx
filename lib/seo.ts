@@ -198,10 +198,10 @@ export function getServiceJsonLd(slug: ServiceSlug) {
     general: 'General Repairs & Handyman',
   };
   const minPrices: Record<ServiceSlug, string> = {
-    electrical: '300',
-    ac: '300',
-    cctv: '300',
-    general: '250',
+    electrical: '500',
+    ac: '500',
+    cctv: '500',
+    general: '500',
   };
   return {
     '@context': 'https://schema.org',
