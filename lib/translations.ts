@@ -17,6 +17,10 @@ const translations: Record<Lang, Record<string, string>> = {
     hero_cta: 'Book a Repair',
     hero_emergency: 'Emergency Repair',
 
+    // CTA Banner
+    cta_heading: 'Ready to Get Started?',
+    cta_desc: 'Book online or message us on LINE for a fast, free estimate. We respond within minutes.',
+
     // Emergency Modal
     emergency_title: 'Emergency Repair',
     emergency_desc: 'Need urgent help? Contact Top directly!',
@@ -204,6 +208,10 @@ const translations: Record<Lang, Record<string, string>> = {
     hero_cta: '\u0E08\u0E2D\u0E07\u0E0B\u0E48\u0E2D\u0E21',
     hero_emergency: '\u0E0B\u0E48\u0E2D\u0E21\u0E09\u0E38\u0E01\u0E40\u0E09\u0E34\u0E19',
 
+    // CTA Banner
+    cta_heading: '\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E40\u0E23\u0E34\u0E48\u0E21\u0E41\u0E25\u0E49\u0E27\u0E2B\u0E23\u0E37\u0E2D\u0E22\u0E31\u0E07?',
+    cta_desc: '\u0E08\u0E2D\u0E07\u0E2D\u0E2D\u0E19\u0E44\u0E25\u0E19\u0E4C\u0E2B\u0E23\u0E37\u0E2D\u0E17\u0E31\u0E01 LINE \u0E21\u0E32\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E23\u0E31\u0E1A\u0E43\u0E1A\u0E40\u0E2A\u0E19\u0E2D\u0E23\u0E32\u0E04\u0E32\u0E1F\u0E23\u0E35 \u0E40\u0E23\u0E32\u0E15\u0E2D\u0E1A\u0E20\u0E32\u0E22\u0E43\u0E19\u0E44\u0E21\u0E48\u0E01\u0E35\u0E48\u0E19\u0E32\u0E17\u0E35',
+
     // Emergency Modal
     emergency_title: '\u0E0B\u0E48\u0E2D\u0E21\u0E09\u0E38\u0E01\u0E40\u0E09\u0E34\u0E19',
     emergency_desc: '\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E04\u0E27\u0E32\u0E21\u0E0A\u0E48\u0E27\u0E22\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E23\u0E48\u0E07\u0E14\u0E48\u0E27\u0E19? \u0E15\u0E34\u0E14\u0E15\u0E48\u0E2D Top \u0E42\u0E14\u0E22\u0E15\u0E23\u0E07!',
@@ -390,6 +398,10 @@ const translations: Record<Lang, Record<string, string>> = {
     hero_tagline: '\u5FEB\u901F \u2022 \u53EF\u9760 \u2022 \u5B9E\u60E0',
     hero_cta: '\u9884\u7EA6\u7EF4\u4FEE',
     hero_emergency: '\u7D27\u6025\u7EF4\u4FEE',
+
+    // CTA Banner
+    cta_heading: '\u51C6\u5907\u597D\u5F00\u59CB\u4E86\u5417\uFF1F',
+    cta_desc: '\u5728\u7EBF\u9884\u7EA6\u6216\u901A\u8FC7LINE\u8054\u7CFB\u6211\u4EEC\uFF0C\u83B7\u53D6\u5FEB\u901F\u514D\u8D39\u62A5\u4EF7\u3002\u6211\u4EEC\u51E0\u5206\u949F\u5185\u56DE\u590D',
 
     // Emergency Modal
     emergency_title: '\u7D27\u6025\u7EF4\u4FEE',
