@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Lang } from '@/lib/types';
 import { t } from '@/lib/translations';
-import { getHreflangTags, getCanonicalUrl } from '@/lib/seo';
+import { getHreflangTags, getCanonicalUrl, getOgLocale } from '@/lib/seo';
 import { isValidLang } from '@/lib/services';
 import ContactContent from './ContactContent';
 
@@ -20,6 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       title: `${t(lang as Lang, 'contact_title')} | Top Repairs CNX`,
       description: t(lang as Lang, 'contact_desc'),
       url: getCanonicalUrl(lang as Lang, '/contact'),
+      locale: getOgLocale(lang as Lang),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${t(lang as Lang, 'contact_title')} | Top Repairs CNX`,
+      description: t(lang as Lang, 'contact_desc'),
     },
   };
 }

@@ -42,7 +42,6 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'Top Repairs CNX',
     type: 'website',
-    locale: 'en',
   },
 };
 

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Lang } from '@/lib/types';
 import { t } from '@/lib/translations';
-import { getBreadcrumbJsonLd, getHreflangTags, getCanonicalUrl } from '@/lib/seo';
+import { getBreadcrumbJsonLd, getHreflangTags, getCanonicalUrl, getOgLocale } from '@/lib/seo';
 import { isValidLang } from '@/lib/services';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 
@@ -20,6 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       title: `${t(lang as Lang, 'about_title')} | Top Repairs CNX`,
       description: t(lang as Lang, 'about_story').slice(0, 160),
       url: getCanonicalUrl(lang as Lang, '/about'),
+      locale: getOgLocale(lang as Lang),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${t(lang as Lang, 'about_title')} | Top Repairs CNX`,
+      description: t(lang as Lang, 'about_story').slice(0, 160),
     },
   };
 }

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Lang } from '@/lib/types';
 import { t, reviews } from '@/lib/translations';
-import { getPageMeta, getLocalBusinessJsonLd, getBreadcrumbJsonLd, getHreflangTags, getCanonicalUrl } from '@/lib/seo';
+import { getPageMeta, getLocalBusinessJsonLd, getBreadcrumbJsonLd, getHreflangTags, getCanonicalUrl, getOgLocale } from '@/lib/seo';
 import { isValidLang } from '@/lib/services';
 import { PHONE, PHONE_DISPLAY, LINE_URL } from '@/lib/contact';
 import ServiceCard from '@/components/ui/ServiceCard';
@@ -28,6 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       url: getCanonicalUrl(lang, ''),
       siteName: 'Top Repairs CNX',
       type: 'website',
+      locale: getOgLocale(lang),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title,
+      description: meta.description,
     },
   };
 }
@@ -46,7 +52,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd(lang)) }}
       />
       <script
         type="application/ld+json"

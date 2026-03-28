@@ -1,5 +1,6 @@
 import { Lang, ServiceSlug } from './types';
 import { PHONE } from './contact';
+import { t } from './translations';
 
 const baseUrl = 'https://toprepairscnx.com';
 
@@ -112,14 +113,20 @@ export function getCanonicalUrl(lang: Lang, path: string) {
   return `${baseUrl}/${lang}${path}`;
 }
 
-export function getLocalBusinessJsonLd() {
+export function getOgLocale(lang: Lang) {
+  const locales: Record<Lang, string> = { en: 'en_US', th: 'th_TH', zh: 'zh_CN' };
+  return locales[lang];
+}
+
+export function getLocalBusinessJsonLd(lang: Lang = 'th') {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Top Repairs CNX',
-    description: 'Professional repair services in Chiang Mai and Lamphun. Electrical, AC, CCTV, and general repairs.',
-    url: baseUrl,
+    description: getPageMeta('home', lang).description,
+    url: `${baseUrl}/${lang}`,
     telephone: PHONE,
+    inLanguage: lang === 'zh' ? 'zh-Hans' : lang,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Chiang Mai',
@@ -152,6 +159,34 @@ export function getLocalBusinessJsonLd() {
         { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'General Repairs' } },
       ],
     },
+  };
+}
+
+export function getFaqJsonLd(lang: Lang, slug: ServiceSlug) {
+  const faqCounts: Record<ServiceSlug, number> = {
+    electrical: 4,
+    ac: 3,
+    cctv: 3,
+    general: 3,
+  };
+  const count = faqCounts[slug] || 3;
+  const items = Array.from({ length: count }, (_, i) => {
+    const q = t(lang, `faq_${slug}_q${i + 1}`);
+    const a = t(lang, `faq_${slug}_a${i + 1}`);
+    if (!q || !a || q.startsWith('[') || a.startsWith('[')) return null;
+    return {
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    };
+  }).filter(Boolean);
+
+  if (items.length === 0) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items,
+    inLanguage: lang === 'zh' ? 'zh-Hans' : lang,
   };
 }
 

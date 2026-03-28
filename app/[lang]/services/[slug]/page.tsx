@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Lang, ServiceSlug } from '@/lib/types';
 import { t, getServiceName, getServiceDesc, getItemName, getFAQs } from '@/lib/translations';
-import { getPageMeta, getServiceJsonLd, getBreadcrumbJsonLd, getHreflangTags, getCanonicalUrl } from '@/lib/seo';
+import { getPageMeta, getServiceJsonLd, getBreadcrumbJsonLd, getHreflangTags, getCanonicalUrl, getOgLocale, getFaqJsonLd } from '@/lib/seo';
 import { isValidLang, isValidSlug, validLangs, validSlugs } from '@/lib/services';
 import { getServiceBySlug } from '@/lib/pricing';
 import FAQAccordion from '@/components/ui/FAQAccordion';
@@ -42,6 +42,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       title: meta.title,
       description: meta.description,
       url: getCanonicalUrl(lang, `/services/${slug}`),
+      locale: getOgLocale(lang),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title,
+      description: meta.description,
     },
   };
 }
@@ -76,6 +82,12 @@ export default async function ServicePage({ params }: { params: Promise<{ lang: 
           ),
         }}
       />
+      {getFaqJsonLd(lang, slug) && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getFaqJsonLd(lang, slug)) }}
+        />
+      )}
 
       <section className="section-padding px-4 relative overflow-hidden">
         <div className="orb w-[400px] h-[400px] top-[-5%] right-[-12%] opacity-20" style={{ background: `radial-gradient(circle, ${accent}15, transparent 70%)` }} />
